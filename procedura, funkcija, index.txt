@@ -1,0 +1,80 @@
+===========================================================================
+PROCEDURA (DODAVANJE ODABRANOG BLUEPRINT-A I CODE-A U ZAJEDNICKU TABELU)
+
+CREATE PROCEDURE P_INS_GameBlueprinCode
+(
+	@P_GameBlueprint_Name NVARCHAR(max),
+	@P_Code_Name NVARCHAR(max)
+)
+
+AS
+
+BEGIN TRY
+	DECLARE @P_GameBlueprints_Blu_Id INT
+	DECLARE @P_Codes_Code_Id INT
+	
+	SET @P_GameBlueprints_Blu_Id =
+	(
+		SELECT Blu_Id
+		FROM dbo.GameBlueprints
+		WHERE Name = @P_GameBlueprint_Name
+	)
+
+	SET @P_Codes_Code_Id =
+	(
+		SELECT Code_Id
+		FROM dbo.Codes
+		WHERE Name = @P_Code_Name
+	)
+	INSERT INTO dbo.GameBlueprintCode(GameBlueprints_Blu_Id, Codes_Code_Id)
+	VALUES(@P_GameBlueprints_Blu_Id,@P_Codes_Code_Id); 
+
+END TRY
+
+BEGIN CATCH
+	SELECT
+		ERROR_NUMBER() AS ErrorNumber,
+		ERROR_MESSAGE() AS ErrorMessage;
+END CATCH
+
+=================================================================================
+FUNKCIJA (ISPIS IMENA ARTIST-A KOJI JE CRTAO UNESENI ART)
+
+CREATE FUNCTION F_GET_ARTIST_ART
+(
+	@Art_Name NVARCHAR(max)
+)
+RETURNS NVARCHAR (max)
+
+AS
+
+BEGIN
+	DECLARE @return_value NVARCHAR(max)
+
+	SET @return_value =
+	(
+		SELECT First_name
+		FROM dbo.Employees
+		WHERE Employee_Id = ( SELECT Employee_Id
+				      FROM dbo.Employees_Artist
+				      WHERE Employee_Id = ( SELECT Artists_Employee_Id
+							    FROM dbo.ArtArtist
+							    WHERE Arts_Art_Id = ( SELECT Art_Id
+										  FROM dbo.Arts
+										  WHERE Name = @Art_Name
+										)
+							  )
+				    )
+	)
+	RETURN @return_value
+END;
+
+
+=================================================================================
+INDEX
+
+CREATE NONCLUSTERED INDEX Games_Id
+ON dbo.Games
+(
+	Game_Id ASC
+)

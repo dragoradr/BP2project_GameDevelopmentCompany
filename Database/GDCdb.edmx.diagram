@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8dd908d574a424ca185e7cd60395d43" Name="Diagram1" ZoomLevel="74" >
+        <EntityTypeShape EntityType="GDCdb.GameDevelopmentCompany" Width="1.5" PointX="8" PointY="0.5" />
+        <EntityTypeShape EntityType="GDCdb.Employee" Width="1.5" PointX="3.625" PointY="2.375" />
+        <EntityTypeShape EntityType="GDCdb.Game" Width="1.5" PointX="15.375" PointY="2.25" />
+        <AssociationConnector Association="GDCdb.GameDevelopmentCompanyEmployee" />
+        <AssociationConnector Association="GDCdb.GameDevelopmentCompanyGame" />
+        <EntityTypeShape EntityType="GDCdb.GameDesigner" Width="1.5" PointX="0.5" PointY="5.375" />
+        <InheritanceConnector EntityType="GDCdb.GameDesigner" />
+        <EntityTypeShape EntityType="GDCdb.Programmer" Width="1.5" PointX="3.125" PointY="5.375" />
+        <InheritanceConnector EntityType="GDCdb.Programmer" />
+        <EntityTypeShape EntityType="GDCdb.Artist" Width="1.5" PointX="5.875" PointY="5.375" />
+        <InheritanceConnector EntityType="GDCdb.Artist" />
+        <EntityTypeShape EntityType="GDCdb.Tester" Width="1.5" PointX="8.375" PointY="5.375" />
+        <InheritanceConnector EntityType="GDCdb.Tester" />
+        <EntityTypeShape EntityType="GDCdb.GameBlueprint" Width="1.5" PointX="0.5" PointY="7.375" />
+        <AssociationConnector Association="GDCdb.GameDesignerGameBlueprint" />
+        <EntityTypeShape EntityType="GDCdb.Code" Width="1.5" PointX="3.125" PointY="7.625" />
+        <EntityTypeShape EntityType="GDCdb.BetaVersion" Width="1.5" PointX="15.375" PointY="5.625" />
+        <AssociationConnector Association="GDCdb.GameBetaVersion" />
+        <AssociationConnector Association="GDCdb.TesterBetaVersion" />
+        <EntityTypeShape EntityType="GDCdb.Art" Width="1.5" PointX="5.875" PointY="7.625" />
+        <AssociationConnector Association="GDCdb.ArtTester" />
+        <AssociationConnector Association="GDCdb.GameBlueprintCode" />
+        <AssociationConnector Association="GDCdb.CodeProgrammer" />
+        <AssociationConnector Association="GDCdb.CodeArt" />
+        <AssociationConnector Association="GDCdb.ArtArtist" />
+        <AssociationConnector Association="GDCdb.EmployeeEmployee" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.7595718877801154" PointY="5.1244921874999987" />
+          <ConnectorPoint PointX="1.5591216651604412" PointY="64.065497587316443" />
+          <ConnectorPoint PointX="2.9650901533665079" PointY="64.065497587316443" />
+          <ConnectorPoint PointX="2.9650901533665079" PointY="52.654960108330918" />
+          <ConnectorPoint PointX="2.2620382066034739" PointY="52.654960108330918" />
+          <ConnectorPoint PointX="2.0953715399368069" PointY="52.654960108330918" />
+          <ConnectorPoint PointX="1.5591216651604412" PointY="52.654960108330918" />
+          <ConnectorPoint PointX="4.395230115926327" PointY="11.811204854792463" />
+          <ConnectorPoint PointX="4.4067753151032552" PointY="11.644938543852023" />
+          <ConnectorPoint PointX="4.8595420330316594" PointY="5.1244921874999987" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

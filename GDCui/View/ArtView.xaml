@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="GDCui.View.ArtView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GDCui.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid Background="SandyBrown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="Art" Foreground="Brown" Background="Transparent" FontSize ="18" HorizontalAlignment="Left" VerticalAlignment="Top" Height="350" Width="1000" Margin="104,60,0,0">
+            <DataGrid SelectedItem="{Binding SelectedArt}" ItemsSource="{Binding Arts}" 
+                      CanUserResizeRows="False" CanUserSortColumns="False" CanUserReorderColumns="True"  Background="NavajoWhite" RowHeight="40" MaxColumnWidth="200"
+                      AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="top" IsReadOnly="True" Width="990" Height="310" Margin="0,10,0,0">
+                <DataGrid.Resources>
+                    <ResourceDictionary>
+                        <Style x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="Black"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Goldenrod"/>
+                                    <Setter Property="BorderBrush" Value="Goldenrod"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Goldenrod"/>
+                                    <Setter Property="BorderBrush" Value="Goldenrod"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ResourceDictionary>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="300" Binding="{Binding Path=Art_Id}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                <Setter Property="ToolTip" Value="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Path=Name}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                <Setter Property="ToolTip" Value="{Binding Text, RelativeSource={RelativeSource Self}}"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+        </GroupBox>
+
+        <GroupBox Header="Add New" Foreground="Brown" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Width="450" Height="200" Margin="104,454,0,0">
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" Height="200">
+                <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="30" Width="60" Margin="10,10,0,0"/>
+                <TextBox x:Name="tbName" Text="{Binding NameText}" ToolTip="Enter Name" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" FontSize="18" VerticalAlignment="top" Width="273" Margin="0,10,101,0"/>
+                <Button Name="btnAdd" ToolTip="Adds item to the grid" Command="{Binding AddCommand}" Content="Add" FontSize="20" Margin="332,117,28,43" Height="40" Width="90"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Update/Delete" Foreground="Brown" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="450" Margin="654,454,0,0">
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="450">
+                <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="30" Width="60" Margin="10,10,0,0"/>
+                <TextBox x:Name="tbNameUpdate" Text="{Binding SelectedArtName}" ToolTip="Enter Name" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" FontSize="18" VerticalAlignment="top" Width="273" Margin="0,10,102,0"/>
+                <Button Name="btnUpdate" ToolTip="Adds item to the grid" Command="{Binding UpdateCommand}" Content="Update" FontSize="20" Margin="10,114,350,42" Height="40" Width="90"/>
+                <Button x:Name="btnDelete" ToolTip="Deletes item from the grid" Command="{Binding DeleteCommand}" Content="Delete" FontSize="20" Margin="333,116,27,44" Height="40" Width="90"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

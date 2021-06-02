@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GDCdb.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GDCdbStoreContainer">
+    <EntitySet Name="GameDevelopmentCompanies" EntityType="GDCdb.Store.GameDevelopmentCompanies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="GDCdb.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Games" EntityType="GDCdb.Store.Games" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameBlueprints" EntityType="GDCdb.Store.GameBlueprints" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Codes" EntityType="GDCdb.Store.Codes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BetaVersions" EntityType="GDCdb.Store.BetaVersions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Arts" EntityType="GDCdb.Store.Arts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees_GameDesigner" EntityType="GDCdb.Store.Employees_GameDesigner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees_Tester" EntityType="GDCdb.Store.Employees_Tester" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees_Programmer" EntityType="GDCdb.Store.Employees_Programmer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees_Artist" EntityType="GDCdb.Store.Employees_Artist" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameDesignerGameBlueprint" EntityType="GDCdb.Store.GameDesignerGameBlueprint" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameBetaVersion" EntityType="GDCdb.Store.GameBetaVersion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TesterBetaVersion" EntityType="GDCdb.Store.TesterBetaVersion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArtTester" EntityType="GDCdb.Store.ArtTester" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameBlueprintCode" EntityType="GDCdb.Store.GameBlueprintCode" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CodeProgrammer" EntityType="GDCdb.Store.CodeProgrammer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CodeArt" EntityType="GDCdb.Store.CodeArt" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArtArtist" EntityType="GDCdb.Store.ArtArtist" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GameDevelopmentCompanyEmployee" Association="GDCdb.Store.GameDevelopmentCompanyEmployee">
+      <End Role="GameDevelopmentCompany" EntitySet="GameDevelopmentCompanies" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="GameDevelopmentCompanyGame" Association="GDCdb.Store.GameDevelopmentCompanyGame">
+      <End Role="GameDevelopmentCompany" EntitySet="GameDevelopmentCompanies" />
+      <End Role="Game" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameDesignerGameBlueprint_GameDesigner" Association="GDCdb.Store.FK_GameDesignerGameBlueprint_GameDesigner">
+      <End Role="GameDesigner" EntitySet="Employees_GameDesigner" />
+      <End Role="GameDesignerGameBlueprint" EntitySet="GameDesignerGameBlueprint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameDesignerGameBlueprint_GameBlueprint" Association="GDCdb.Store.FK_GameDesignerGameBlueprint_GameBlueprint">
+      <End Role="GameBlueprint" EntitySet="GameBlueprints" />
+      <End Role="GameDesignerGameBlueprint" EntitySet="GameDesignerGameBlueprint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameBetaVersion_Game" Association="GDCdb.Store.FK_GameBetaVersion_Game">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="GameBetaVersion" EntitySet="GameBetaVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameBetaVersion_BetaVersion" Association="GDCdb.Store.FK_GameBetaVersion_BetaVersion">
+      <End Role="BetaVersion" EntitySet="BetaVersions" />
+      <End Role="GameBetaVersion" EntitySet="GameBetaVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TesterBetaVersion_Tester" Association="GDCdb.Store.FK_TesterBetaVersion_Tester">
+      <End Role="Tester" EntitySet="Employees_Tester" />
+      <End Role="TesterBetaVersion" EntitySet="TesterBetaVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TesterBetaVersion_BetaVersion" Association="GDCdb.Store.FK_TesterBetaVersion_BetaVersion">
+      <End Role="BetaVersion" EntitySet="BetaVersions" />
+      <End Role="TesterBetaVersion" EntitySet="TesterBetaVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtTester_Art" Association="GDCdb.Store.FK_ArtTester_Art">
+      <End Role="Art" EntitySet="Arts" />
+      <End Role="ArtTester" EntitySet="ArtTester" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtTester_Tester" Association="GDCdb.Store.FK_ArtTester_Tester">
+      <End Role="Tester" EntitySet="Employees_Tester" />
+      <End Role="ArtTester" EntitySet="ArtTester" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameBlueprintCode_GameBlueprint" Association="GDCdb.Store.FK_GameBlueprintCode_GameBlueprint">
+      <End Role="GameBlueprint" EntitySet="GameBlueprints" />
+      <End Role="GameBlueprintCode" EntitySet="GameBlueprintCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameBlueprintCode_Code" Association="GDCdb.Store.FK_GameBlueprintCode_Code">
+      <End Role="Code" EntitySet="Codes" />
+      <End Role="GameBlueprintCode" EntitySet="GameBlueprintCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeProgrammer_Code" Association="GDCdb.Store.FK_CodeProgrammer_Code">
+      <End Role="Code" EntitySet="Codes" />
+      <End Role="CodeProgrammer" EntitySet="CodeProgrammer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeProgrammer_Programmer" Association="GDCdb.Store.FK_CodeProgrammer_Programmer">
+      <End Role="Programmer" EntitySet="Employees_Programmer" />
+      <End Role="CodeProgrammer" EntitySet="CodeProgrammer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeArt_Code" Association="GDCdb.Store.FK_CodeArt_Code">
+      <End Role="Code" EntitySet="Codes" />
+      <End Role="CodeArt" EntitySet="CodeArt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeArt_Art" Association="GDCdb.Store.FK_CodeArt_Art">
+      <End Role="Art" EntitySet="Arts" />
+      <End Role="CodeArt" EntitySet="CodeArt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtArtist_Art" Association="GDCdb.Store.FK_ArtArtist_Art">
+      <End Role="Art" EntitySet="Arts" />
+      <End Role="ArtArtist" EntitySet="ArtArtist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtArtist_Artist" Association="GDCdb.Store.FK_ArtArtist_Artist">
+      <End Role="Artist" EntitySet="Employees_Artist" />
+      <End Role="ArtArtist" EntitySet="ArtArtist" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeEmployee" Association="GDCdb.Store.EmployeeEmployee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee1" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameDesigner_inherits_Employee" Association="GDCdb.Store.FK_GameDesigner_inherits_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="GameDesigner" EntitySet="Employees_GameDesigner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tester_inherits_Employee" Association="GDCdb.Store.FK_Tester_inherits_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Tester" EntitySet="Employees_Tester" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Programmer_inherits_Employee" Association="GDCdb.Store.FK_Programmer_inherits_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Programmer" EntitySet="Employees_Programmer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Artist_inherits_Employee" Association="GDCdb.Store.FK_Artist_inherits_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Artist" EntitySet="Employees_Artist" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="GameDevelopmentCompanies">
+    <Key>
+      <PropertyRef Name="Company_Id" />
+    </Key>
+    <Property Name="Company_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GameDevelopmentCompanyCompany_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeEmployee_Id" Type="int" Nullable="true" />
+    <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="Game_Id" />
+    </Key>
+    <Property Name="Game_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Genre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Release_date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GameDevelopmentCompanyCompany_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameBlueprints">
+    <Key>
+      <PropertyRef Name="Blu_Id" />
+    </Key>
+    <Property Name="Blu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Codes">
+    <Key>
+      <PropertyRef Name="Code_Id" />
+    </Key>
+    <Property Name="Code_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BetaVersions">
+    <Key>
+      <PropertyRef Name="Beta_Id" />
+    </Key>
+    <Property Name="Beta_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Arts">
+    <Key>
+      <PropertyRef Name="Art_Id" />
+    </Key>
+    <Property Name="Art_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees_GameDesigner">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees_Tester">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees_Programmer">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees_Artist">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameDesignerGameBlueprint">
+    <Key>
+      <PropertyRef Name="GameDesigners_Employee_Id" />
+      <PropertyRef Name="GameBlueprints_Blu_Id" />
+    </Key>
+    <Property Name="GameDesigners_Employee_Id" Type="int" Nullable="false" />
+    <Property Name="GameBlueprints_Blu_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameBetaVersion">
+    <Key>
+      <PropertyRef Name="Games_Game_Id" />
+      <PropertyRef Name="BetaVersions_Beta_Id" />
+    </Key>
+    <Property Name="Games_Game_Id" Type="int" Nullable="false" />
+    <Property Name="BetaVersions_Beta_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TesterBetaVersion">
+    <Key>
+      <PropertyRef Name="Testers_Employee_Id" />
+      <PropertyRef Name="BetaVersions_Beta_Id" />
+    </Key>
+    <Property Name="Testers_Employee_Id" Type="int" Nullable="false" />
+    <Property Name="BetaVersions_Beta_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArtTester">
+    <Key>
+      <PropertyRef Name="Arts_Art_Id" />
+      <PropertyRef Name="Testers_Employee_Id" />
+    </Key>
+    <Property Name="Arts_Art_Id" Type="int" Nullable="false" />
+    <Property Name="Testers_Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameBlueprintCode">
+    <Key>
+      <PropertyRef Name="GameBlueprints_Blu_Id" />
+      <PropertyRef Name="Codes_Code_Id" />
+    </Key>
+    <Property Name="GameBlueprints_Blu_Id" Type="int" Nullable="false" />
+    <Property Name="Codes_Code_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodeProgrammer">
+    <Key>
+      <PropertyRef Name="Codes_Code_Id" />
+      <PropertyRef Name="Programmers_Employee_Id" />
+    </Key>
+    <Property Name="Codes_Code_Id" Type="int" Nullable="false" />
+    <Property Name="Programmers_Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodeArt">
+    <Key>
+      <PropertyRef Name="Codes_Code_Id" />
+      <PropertyRef Name="Arts_Art_Id" />
+    </Key>
+    <Property Name="Codes_Code_Id" Type="int" Nullable="false" />
+    <Property Name="Arts_Art_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArtArtist">
+    <Key>
+      <PropertyRef Name="Arts_Art_Id" />
+      <PropertyRef Name="Artists_Employee_Id" />
+    </Key>
+    <Property Name="Arts_Art_Id" Type="int" Nullable="false" />
+    <Property Name="Artists_Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="GameDevelopmentCompanyEmployee">
+    <End Role="GameDevelopmentCompany" Type="GDCdb.Store.GameDevelopmentCompanies" Multiplicity="1" />
+    <End Role="Employee" Type="GDCdb.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameDevelopmentCompany">
+        <PropertyRef Name="Company_Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="GameDevelopmentCompanyCompany_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameDevelopmentCompanyGame">
+    <End Role="GameDevelopmentCompany" Type="GDCdb.Store.GameDevelopmentCompanies" Multiplicity="1" />
+    <End Role="Game" Type="GDCdb.Store.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameDevelopmentCompany">
+        <PropertyRef Name="Company_Id" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="GameDevelopmentCompanyCompany_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeEmployee">
+    <End Role="Employee" Type="GDCdb.Store.Employees" Multiplicity="0..1" />
+    <End Role="Employee1" Type="GDCdb.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Employee1">
+        <PropertyRef Name="EmployeeEmployee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameDesignerGameBlueprint_GameDesigner">
+    <End Role="GameDesigner" Type="GDCdb.Store.Employees_GameDesigner" Multiplicity="1" />
+    <End Role="GameDesignerGameBlueprint" Type="GDCdb.Store.GameDesignerGameBlueprint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameDesigner">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="GameDesignerGameBlueprint">
+        <PropertyRef Name="GameDesigners_Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameDesignerGameBlueprint_GameBlueprint">
+    <End Role="GameDesignerGameBlueprint" Type="GDCdb.Store.GameDesignerGameBlueprint" Multiplicity="*" />
+    <End Role="GameBlueprint" Type="GDCdb.Store.GameBlueprints" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GameBlueprint">
+        <PropertyRef Name="Blu_Id" />
+      </Principal>
+      <Dependent Role="GameDesignerGameBlueprint">
+        <PropertyRef Name="GameBlueprints_Blu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameBetaVersion_Game">
+    <End Role="Game" Type="GDCdb.Store.Games" Multiplicity="1" />
+    <End Role="GameBetaVersion" Type="GDCdb.Store.GameBetaVersion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Game_Id" />
+      </Principal>
+      <Dependent Role="GameBetaVersion">
+        <PropertyRef Name="Games_Game_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameBetaVersion_BetaVersion">
+    <End Role="GameBetaVersion" Type="GDCdb.Store.GameBetaVersion" Multiplicity="*" />
+    <End Role="BetaVersion" Type="GDCdb.Store.BetaVersions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="BetaVersion">
+        <PropertyRef Name="Beta_Id" />
+      </Principal>
+      <Dependent Role="GameBetaVersion">
+        <PropertyRef Name="BetaVersions_Beta_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TesterBetaVersion_Tester">
+    <End Role="Tester" Type="GDCdb.Store.Employees_Tester" Multiplicity="1" />
+    <End Role="TesterBetaVersion" Type="GDCdb.Store.TesterBetaVersion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tester">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="TesterBetaVersion">
+        <PropertyRef Name="Testers_Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TesterBetaVersion_BetaVersion">
+    <End Role="TesterBetaVersion" Type="GDCdb.Store.TesterBetaVersion" Multiplicity="*" />
+    <End Role="BetaVersion" Type="GDCdb.Store.BetaVersions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="BetaVersion">
+        <PropertyRef Name="Beta_Id" />
+      </Principal>
+      <Dependent Role="TesterBetaVersion">
+        <PropertyRef Name="BetaVersions_Beta_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtTester_Art">
+    <End Role="Art" Type="GDCdb.Store.Arts" Multiplicity="1" />
+    <End Role="ArtTester" Type="GDCdb.Store.ArtTester" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Art">
+        <PropertyRef Name="Art_Id" />
+      </Principal>
+      <Dependent Role="ArtTester">
+        <PropertyRef Name="Arts_Art_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtTester_Tester">
+    <End Role="ArtTester" Type="GDCdb.Store.ArtTester" Multiplicity="*" />
+    <End Role="Tester" Type="GDCdb.Store.Employees_Tester" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tester">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="ArtTester">
+        <PropertyRef Name="Testers_Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameBlueprintCode_GameBlueprint">
+    <End Role="GameBlueprint" Type="GDCdb.Store.GameBlueprints" Multiplicity="1" />
+    <End Role="GameBlueprintCode" Type="GDCdb.Store.GameBlueprintCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameBlueprint">
+        <PropertyRef Name="Blu_Id" />
+      </Principal>
+      <Dependent Role="GameBlueprintCode">
+        <PropertyRef Name="GameBlueprints_Blu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameBlueprintCode_Code">
+    <End Role="GameBlueprintCode" Type="GDCdb.Store.GameBlueprintCode" Multiplicity="*" />
+    <End Role="Code" Type="GDCdb.Store.Codes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Code">
+        <PropertyRef Name="Code_Id" />
+      </Principal>
+      <Dependent Role="GameBlueprintCode">
+        <PropertyRef Name="Codes_Code_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeProgrammer_Code">
+    <End Role="Code" Type="GDCdb.Store.Codes" Multiplicity="1" />
+    <End Role="CodeProgrammer" Type="GDCdb.Store.CodeProgrammer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Code">
+        <PropertyRef Name="Code_Id" />
+      </Principal>
+      <Dependent Role="CodeProgrammer">
+        <PropertyRef Name="Codes_Code_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeProgrammer_Programmer">
+    <End Role="CodeProgrammer" Type="GDCdb.Store.CodeProgrammer" Multiplicity="*" />
+    <End Role="Programmer" Type="GDCdb.Store.Employees_Programmer" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Programmer">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="CodeProgrammer">
+        <PropertyRef Name="Programmers_Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeArt_Code">
+    <End Role="Code" Type="GDCdb.Store.Codes" Multiplicity="1" />
+    <End Role="CodeArt" Type="GDCdb.Store.CodeArt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Code">
+        <PropertyRef Name="Code_Id" />
+      </Principal>
+      <Dependent Role="CodeArt">
+        <PropertyRef Name="Codes_Code_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeArt_Art">
+    <End Role="CodeArt" Type="GDCdb.Store.CodeArt" Multiplicity="*" />
+    <End Role="Art" Type="GDCdb.Store.Arts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Art">
+        <PropertyRef Name="Art_Id" />
+      </Principal>
+      <Dependent Role="CodeArt">
+        <PropertyRef Name="Arts_Art_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtArtist_Art">
+    <End Role="Art" Type="GDCdb.Store.Arts" Multiplicity="1" />
+    <End Role="ArtArtist" Type="GDCdb.Store.ArtArtist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Art">
+        <PropertyRef Name="Art_Id" />
+      </Principal>
+      <Dependent Role="ArtArtist">
+        <PropertyRef Name="Arts_Art_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtArtist_Artist">
+    <End Role="ArtArtist" Type="GDCdb.Store.ArtArtist" Multiplicity="*" />
+    <End Role="Artist" Type="GDCdb.Store.Employees_Artist" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="ArtArtist">
+        <PropertyRef Name="Artists_Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameDesigner_inherits_Employee">
+    <End Role="Employee" Type="GDCdb.Store.Employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GameDesigner" Type="GDCdb.Store.Employees_GameDesigner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="GameDesigner">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tester_inherits_Employee">
+    <End Role="Employee" Type="GDCdb.Store.Employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tester" Type="GDCdb.Store.Employees_Tester" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Tester">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Programmer_inherits_Employee">
+    <End Role="Employee" Type="GDCdb.Store.Employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Programmer" Type="GDCdb.Store.Employees_Programmer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Programmer">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Artist_inherits_Employee">
+    <End Role="Employee" Type="GDCdb.Store.Employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Artist" Type="GDCdb.Store.Employees_Artist" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Artist">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="GDCdb" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="GDCdbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GameDevelopmentCompanies" EntityType="GDCdb.GameDevelopmentCompany" />
+          <EntitySet Name="Employees" EntityType="GDCdb.Employee" />
+          <EntitySet Name="Games" EntityType="GDCdb.Game" />
+          <AssociationSet Name="GameDevelopmentCompanyEmployee" Association="GDCdb.GameDevelopmentCompanyEmployee">
+            <End Role="GameDevelopmentCompany" EntitySet="GameDevelopmentCompanies" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="GameDevelopmentCompanyGame" Association="GDCdb.GameDevelopmentCompanyGame">
+            <End Role="GameDevelopmentCompany" EntitySet="GameDevelopmentCompanies" />
+            <End Role="Game" EntitySet="Games" />
+          </AssociationSet>
+          <EntitySet Name="GameBlueprints" EntityType="GDCdb.GameBlueprint" />
+          <AssociationSet Name="GameDesignerGameBlueprint" Association="GDCdb.GameDesignerGameBlueprint">
+            <End Role="GameDesigner" EntitySet="Employees" />
+            <End Role="GameBlueprint" EntitySet="GameBlueprints" />
+          </AssociationSet>
+          <EntitySet Name="Codes" EntityType="GDCdb.Code" />
+          <EntitySet Name="BetaVersions" EntityType="GDCdb.BetaVersion" />
+          <AssociationSet Name="GameBetaVersion" Association="GDCdb.GameBetaVersion">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="BetaVersion" EntitySet="BetaVersions" />
+          </AssociationSet>
+          <AssociationSet Name="TesterBetaVersion" Association="GDCdb.TesterBetaVersion">
+            <End Role="Tester" EntitySet="Employees" />
+            <End Role="BetaVersion" EntitySet="BetaVersions" />
+          </AssociationSet>
+          <EntitySet Name="Arts" EntityType="GDCdb.Art" />
+          <AssociationSet Name="ArtTester" Association="GDCdb.ArtTester">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="Tester" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="GameBlueprintCode" Association="GDCdb.GameBlueprintCode">
+            <End Role="GameBlueprint" EntitySet="GameBlueprints" />
+            <End Role="Code" EntitySet="Codes" />
+          </AssociationSet>
+          <AssociationSet Name="CodeProgrammer" Association="GDCdb.CodeProgrammer">
+            <End Role="Code" EntitySet="Codes" />
+            <End Role="Programmer" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="CodeArt" Association="GDCdb.CodeArt">
+            <End Role="Code" EntitySet="Codes" />
+            <End Role="Art" EntitySet="Arts" />
+          </AssociationSet>
+          <AssociationSet Name="ArtArtist" Association="GDCdb.ArtArtist">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="Artist" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeEmployee" Association="GDCdb.EmployeeEmployee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee1" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GameDevelopmentCompany">
+          <Key>
+            <PropertyRef Name="Company_Id" />
+          </Key>
+          <Property Name="Company_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="GDCdb.GameDevelopmentCompanyEmployee" FromRole="GameDevelopmentCompany" ToRole="Employee" />
+          <NavigationProperty Name="Games" Relationship="GDCdb.GameDevelopmentCompanyGame" FromRole="GameDevelopmentCompany" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="Employee" Abstract="false">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_name" Type="String" Nullable="false" />
+          <Property Name="Last_name" Type="String" Nullable="false" />
+          <NavigationProperty Name="GameDevelopmentCompany" Relationship="GDCdb.GameDevelopmentCompanyEmployee" FromRole="Employee" ToRole="GameDevelopmentCompany" />
+          <Property Name="GameDevelopmentCompanyCompany_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="GDCdb.EmployeeEmployee" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee1" Relationship="GDCdb.EmployeeEmployee" FromRole="Employee1" ToRole="Employee" />
+          <Property Name="EmployeeEmployee_Id" Type="Int32" Nullable="true" />
+          <Property Name="Position" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Game_Id" />
+          </Key>
+          <Property Name="Game_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Genre" Type="String" Nullable="false" />
+          <Property Name="Release_date" Type="String" Nullable="false" />
+          <NavigationProperty Name="GameDevelopmentCompany" Relationship="GDCdb.GameDevelopmentCompanyGame" FromRole="Game" ToRole="GameDevelopmentCompany" />
+          <Property Name="GameDevelopmentCompanyCompany_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BetaVersions" Relationship="GDCdb.GameBetaVersion" FromRole="Game" ToRole="BetaVersion" />
+        </EntityType>
+        <Association Name="GameDevelopmentCompanyEmployee">
+          <End Type="GDCdb.GameDevelopmentCompany" Role="GameDevelopmentCompany" Multiplicity="1" />
+          <End Type="GDCdb.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameDevelopmentCompany">
+              <PropertyRef Name="Company_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GameDevelopmentCompanyCompany_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameDevelopmentCompanyGame">
+          <End Type="GDCdb.GameDevelopmentCompany" Role="GameDevelopmentCompany" Multiplicity="1" />
+          <End Type="GDCdb.Game" Role="Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameDevelopmentCompany">
+              <PropertyRef Name="Company_Id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="GameDevelopmentCompanyCompany_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GameDesigner" BaseType="GDCdb.Employee" >
+          <NavigationProperty Name="GameBlueprints" Relationship="GDCdb.GameDesignerGameBlueprint" FromRole="GameDesigner" ToRole="GameBlueprint" />
+        </EntityType>
+        <EntityType Name="Programmer" BaseType="GDCdb.Employee" >
+          <NavigationProperty Name="Codes" Relationship="GDCdb.CodeProgrammer" FromRole="Programmer" ToRole="Code" />
+        </EntityType>
+        <EntityType Name="Artist" BaseType="GDCdb.Employee" >
+          <NavigationProperty Name="Arts" Relationship="GDCdb.ArtArtist" FromRole="Artist" ToRole="Art" />
+        </EntityType>
+        <EntityType Name="Tester" BaseType="GDCdb.Employee" >
+          <NavigationProperty Name="BetaVersions" Relationship="GDCdb.TesterBetaVersion" FromRole="Tester" ToRole="BetaVersion" />
+          <NavigationProperty Name="Arts" Relationship="GDCdb.ArtTester" FromRole="Tester" ToRole="Art" />
+        </EntityType>
+        <EntityType Name="GameBlueprint">
+          <Key>
+            <PropertyRef Name="Blu_Id" />
+          </Key>
+          <Property Name="Blu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="GameDesigners" Relationship="GDCdb.GameDesignerGameBlueprint" FromRole="GameBlueprint" ToRole="GameDesigner" />
+          <NavigationProperty Name="Codes" Relationship="GDCdb.GameBlueprintCode" FromRole="GameBlueprint" ToRole="Code" />
+        </EntityType>
+        <Association Name="GameDesignerGameBlueprint">
+          <End Type="GDCdb.GameDesigner" Role="GameDesigner" Multiplicity="*" />
+          <End Type="GDCdb.GameBlueprint" Role="GameBlueprint" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Code" >
+          <Key>
+            <PropertyRef Name="Code_Id" />
+          </Key>
+          <NavigationProperty Name="GameBlueprints" Relationship="GDCdb.GameBlueprintCode" FromRole="Code" ToRole="GameBlueprint" />
+          <NavigationProperty Name="Programmers" Relationship="GDCdb.CodeProgrammer" FromRole="Code" ToRole="Programmer" />
+          <NavigationProperty Name="Arts" Relationship="GDCdb.CodeArt" FromRole="Code" ToRole="Art" />
+          <Property Name="Code_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BetaVersion" >
+          <Key>
+            <PropertyRef Name="Beta_Id" />
+          </Key>
+          <NavigationProperty Name="Games" Relationship="GDCdb.GameBetaVersion" FromRole="BetaVersion" ToRole="Game" />
+          <NavigationProperty Name="Testers" Relationship="GDCdb.TesterBetaVersion" FromRole="BetaVersion" ToRole="Tester" />
+          <Property Name="Beta_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="GameBetaVersion">
+          <End Type="GDCdb.Game" Role="Game" Multiplicity="*" />
+          <End Type="GDCdb.BetaVersion" Role="BetaVersion" Multiplicity="*" />
+        </Association>
+        <Association Name="TesterBetaVersion">
+          <End Type="GDCdb.Tester" Role="Tester" Multiplicity="*" />
+          <End Type="GDCdb.BetaVersion" Role="BetaVersion" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Art" >
+          <Key>
+            <PropertyRef Name="Art_Id" />
+          </Key>
+          <NavigationProperty Name="Testers" Relationship="GDCdb.ArtTester" FromRole="Art" ToRole="Tester" />
+          <NavigationProperty Name="Codes" Relationship="GDCdb.CodeArt" FromRole="Art" ToRole="Code" />
+          <NavigationProperty Name="Artists" Relationship="GDCdb.ArtArtist" FromRole="Art" ToRole="Artist" />
+          <Property Name="Art_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="ArtTester">
+          <End Type="GDCdb.Art" Role="Art" Multiplicity="*" />
+          <End Type="GDCdb.Tester" Role="Tester" Multiplicity="*" />
+        </Association>
+        <Association Name="GameBlueprintCode">
+          <End Type="GDCdb.GameBlueprint" Role="GameBlueprint" Multiplicity="*" />
+          <End Type="GDCdb.Code" Role="Code" Multiplicity="*" />
+        </Association>
+        <Association Name="CodeProgrammer">
+          <End Type="GDCdb.Code" Role="Code" Multiplicity="*" />
+          <End Type="GDCdb.Programmer" Role="Programmer" Multiplicity="*" />
+        </Association>
+        <Association Name="CodeArt">
+          <End Type="GDCdb.Code" Role="Code" Multiplicity="*" />
+          <End Type="GDCdb.Art" Role="Art" Multiplicity="*" />
+        </Association>
+        <Association Name="ArtArtist">
+          <End Type="GDCdb.Art" Role="Art" Multiplicity="*" />
+          <End Type="GDCdb.Artist" Role="Artist" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeEmployee">
+          <End Type="GDCdb.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="GDCdb.Employee" Role="Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="EmployeeEmployee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GDCdbStoreContainer" CdmEntityContainer="GDCdbContext">
+    <EntitySetMapping Name="GameDevelopmentCompanies">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.GameDevelopmentCompany)">
+        <MappingFragment StoreEntitySet="GameDevelopmentCompanies">
+          <ScalarProperty Name="Company_Id" ColumnName="Company_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="GameDevelopmentCompanyCompany_Id" ColumnName="GameDevelopmentCompanyCompany_Id" />
+          <ScalarProperty Name="EmployeeEmployee_Id" ColumnName="EmployeeEmployee_Id" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.GameDesigner)">
+        <MappingFragment StoreEntitySet="Employees_GameDesigner">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Tester)">
+        <MappingFragment StoreEntitySet="Employees_Tester">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Programmer)">
+        <MappingFragment StoreEntitySet="Employees_Programmer">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Artist)">
+        <MappingFragment StoreEntitySet="Employees_Artist">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Game)">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Game_Id" ColumnName="Game_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Release_date" ColumnName="Release_date" />
+          <ScalarProperty Name="GameDevelopmentCompanyCompany_Id" ColumnName="GameDevelopmentCompanyCompany_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameBlueprints">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.GameBlueprint)">
+        <MappingFragment StoreEntitySet="GameBlueprints">
+          <ScalarProperty Name="Blu_Id" ColumnName="Blu_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Codes">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Code)">
+        <MappingFragment StoreEntitySet="Codes">
+          <ScalarProperty Name="Code_Id" ColumnName="Code_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetaVersions">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.BetaVersion)">
+        <MappingFragment StoreEntitySet="BetaVersions">
+          <ScalarProperty Name="Beta_Id" ColumnName="Beta_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Arts">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Art)">
+        <MappingFragment StoreEntitySet="Arts">
+          <ScalarProperty Name="Art_Id" ColumnName="Art_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GameDesignerGameBlueprint" TypeName="GDCdb.GameDesignerGameBlueprint" StoreEntitySet="GameDesignerGameBlueprint">
+      <EndProperty Name="GameDesigner">
+        <ScalarProperty Name="Employee_Id" ColumnName="GameDesigners_Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="GameBlueprint">
+        <ScalarProperty Name="Blu_Id" ColumnName="GameBlueprints_Blu_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GameBetaVersion" TypeName="GDCdb.GameBetaVersion" StoreEntitySet="GameBetaVersion">
+      <EndProperty Name="Game">
+        <ScalarProperty Name="Game_Id" ColumnName="Games_Game_Id" />
+      </EndProperty>
+      <EndProperty Name="BetaVersion">
+        <ScalarProperty Name="Beta_Id" ColumnName="BetaVersions_Beta_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TesterBetaVersion" TypeName="GDCdb.TesterBetaVersion" StoreEntitySet="TesterBetaVersion">
+      <EndProperty Name="Tester">
+        <ScalarProperty Name="Employee_Id" ColumnName="Testers_Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="BetaVersion">
+        <ScalarProperty Name="Beta_Id" ColumnName="BetaVersions_Beta_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArtTester" TypeName="GDCdb.ArtTester" StoreEntitySet="ArtTester">
+      <EndProperty Name="Art">
+        <ScalarProperty Name="Art_Id" ColumnName="Arts_Art_Id" />
+      </EndProperty>
+      <EndProperty Name="Tester">
+        <ScalarProperty Name="Employee_Id" ColumnName="Testers_Employee_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GameBlueprintCode" TypeName="GDCdb.GameBlueprintCode" StoreEntitySet="GameBlueprintCode">
+      <EndProperty Name="GameBlueprint">
+        <ScalarProperty Name="Blu_Id" ColumnName="GameBlueprints_Blu_Id" />
+      </EndProperty>
+      <EndProperty Name="Code">
+        <ScalarProperty Name="Code_Id" ColumnName="Codes_Code_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CodeProgrammer" TypeName="GDCdb.CodeProgrammer" StoreEntitySet="CodeProgrammer">
+      <EndProperty Name="Code">
+        <ScalarProperty Name="Code_Id" ColumnName="Codes_Code_Id" />
+      </EndProperty>
+      <EndProperty Name="Programmer">
+        <ScalarProperty Name="Employee_Id" ColumnName="Programmers_Employee_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CodeArt" TypeName="GDCdb.CodeArt" StoreEntitySet="CodeArt">
+      <EndProperty Name="Code">
+        <ScalarProperty Name="Code_Id" ColumnName="Codes_Code_Id" />
+      </EndProperty>
+      <EndProperty Name="Art">
+        <ScalarProperty Name="Art_Id" ColumnName="Arts_Art_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArtArtist" TypeName="GDCdb.ArtArtist" StoreEntitySet="ArtArtist">
+      <EndProperty Name="Art">
+        <ScalarProperty Name="Art_Id" ColumnName="Arts_Art_Id" />
+      </EndProperty>
+      <EndProperty Name="Artist">
+        <ScalarProperty Name="Employee_Id" ColumnName="Artists_Employee_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

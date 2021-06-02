@@ -1,0 +1,90 @@
+﻿<Window x:Class="GDCui.View.HomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GDCui"
+        xmlns:views="clr-namespace:GDCui.View"
+        xmlns:viewModel="clr-namespace:GDCui.ViewModel"
+        mc:Ignorable="d"
+        Title="HomeView" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <viewModel:HomeViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:CompanyViewModel}">
+            <views:CompanyView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:EmployeeViewModel}">
+            <views:EmployeeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:GameViewModel}">
+            <views:GameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:GameBlueprintViewModel}">
+            <views:GameBlueprintView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:BetaVersionViewModel}">
+            <views:BetaVersionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ArtViewModel}">
+            <views:ArtView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:CodeViewModel}">
+            <views:CodeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:GameBetaVersionViewModel}">
+            <views:GameBetaVersionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ArtArtistViewModel}">
+            <views:ArtArtistView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ArtTesterViewModel}">
+            <views:ArtTesterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:CodeArtViewModel}">
+            <views:CodeArtView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:CodeProgrammerViewModel}">
+            <views:CodeProgrammerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:TesterBetaVersionViewModel}">
+            <views:TesterBetaVersionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:GameDesignerGameBlueprintViewModel}">
+            <views:GameDesignerGameBlueprintView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:GameBlueprintCodeViewModel}">
+            <views:GameBlueprintCodeView/>
+        </DataTemplate>
+
+
+    </Window.Resources>
+
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Company" Command="{Binding NavCommand}" CommandParameter="companyView"/>
+                <MenuItem Header="Employee" Command="{Binding NavCommand}" CommandParameter="employeeView"/>
+                <MenuItem Header="Game" Command="{Binding NavCommand}" CommandParameter="gameView"/>
+                <MenuItem Header="Blueprint" Command="{Binding NavCommand}" CommandParameter="blueprintView"/>
+                <MenuItem Header="Beta" Command="{Binding NavCommand}" CommandParameter="betaView"/>
+                <MenuItem Header="Art" Command="{Binding NavCommand}" CommandParameter="artView"/>
+                <MenuItem Header="Code" Command="{Binding NavCommand}" CommandParameter="codeView"/>
+                <MenuItem Header="GameBeta" Command="{Binding NavCommand}" CommandParameter="gameBetaView"/>
+                <MenuItem Header="ArtArtist" Command="{Binding NavCommand}" CommandParameter="artArtistView"/>
+                <MenuItem Header="ArtTester" Command="{Binding NavCommand}" CommandParameter="artTesterView"/>
+                <MenuItem Header="CodeArt" Command="{Binding NavCommand}" CommandParameter="codeArtView"/>
+                <MenuItem Header="CodeProgrammer" Command="{Binding NavCommand}" CommandParameter="codeProgrammerView"/>
+                <MenuItem Header="TesterBeta" Command="{Binding NavCommand}" CommandParameter="testerBetaView"/>
+                <MenuItem Header="DesignerBlueprint" Command="{Binding NavCommand}" CommandParameter="designerBlueprintView"/>
+                <MenuItem Header="BlueprintCode" Command="{Binding NavCommand}" CommandParameter="blueprintCodeView"/>
+                
+            </Menu>
+
+            <ContentControl Content="{Binding CurrentVM}"/>
+        </DockPanel>
+    </Grid>
+</Window>

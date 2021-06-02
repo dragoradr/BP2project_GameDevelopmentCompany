@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GDCdbStoreContainer" CdmEntityContainer="GDCdbContext">
+    <EntitySetMapping Name="GameDevelopmentCompanies">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.GameDevelopmentCompany)">
+        <MappingFragment StoreEntitySet="GameDevelopmentCompanies">
+          <ScalarProperty Name="Company_Id" ColumnName="Company_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="GameDevelopmentCompanyCompany_Id" ColumnName="GameDevelopmentCompanyCompany_Id" />
+          <ScalarProperty Name="EmployeeEmployee_Id" ColumnName="EmployeeEmployee_Id" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.GameDesigner)">
+        <MappingFragment StoreEntitySet="Employees_GameDesigner">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Tester)">
+        <MappingFragment StoreEntitySet="Employees_Tester">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Programmer)">
+        <MappingFragment StoreEntitySet="Employees_Programmer">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Artist)">
+        <MappingFragment StoreEntitySet="Employees_Artist">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Game)">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Game_Id" ColumnName="Game_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Release_date" ColumnName="Release_date" />
+          <ScalarProperty Name="GameDevelopmentCompanyCompany_Id" ColumnName="GameDevelopmentCompanyCompany_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameBlueprints">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.GameBlueprint)">
+        <MappingFragment StoreEntitySet="GameBlueprints">
+          <ScalarProperty Name="Blu_Id" ColumnName="Blu_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Codes">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Code)">
+        <MappingFragment StoreEntitySet="Codes">
+          <ScalarProperty Name="Code_Id" ColumnName="Code_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetaVersions">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.BetaVersion)">
+        <MappingFragment StoreEntitySet="BetaVersions">
+          <ScalarProperty Name="Beta_Id" ColumnName="Beta_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Arts">
+      <EntityTypeMapping TypeName="IsTypeOf(GDCdb.Art)">
+        <MappingFragment StoreEntitySet="Arts">
+          <ScalarProperty Name="Art_Id" ColumnName="Art_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GameDesignerGameBlueprint" TypeName="GDCdb.GameDesignerGameBlueprint" StoreEntitySet="GameDesignerGameBlueprint">
+      <EndProperty Name="GameDesigner">
+        <ScalarProperty Name="Employee_Id" ColumnName="GameDesigners_Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="GameBlueprint">
+        <ScalarProperty Name="Blu_Id" ColumnName="GameBlueprints_Blu_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GameBetaVersion" TypeName="GDCdb.GameBetaVersion" StoreEntitySet="GameBetaVersion">
+      <EndProperty Name="Game">
+        <ScalarProperty Name="Game_Id" ColumnName="Games_Game_Id" />
+      </EndProperty>
+      <EndProperty Name="BetaVersion">
+        <ScalarProperty Name="Beta_Id" ColumnName="BetaVersions_Beta_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TesterBetaVersion" TypeName="GDCdb.TesterBetaVersion" StoreEntitySet="TesterBetaVersion">
+      <EndProperty Name="Tester">
+        <ScalarProperty Name="Employee_Id" ColumnName="Testers_Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="BetaVersion">
+        <ScalarProperty Name="Beta_Id" ColumnName="BetaVersions_Beta_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArtTester" TypeName="GDCdb.ArtTester" StoreEntitySet="ArtTester">
+      <EndProperty Name="Art">
+        <ScalarProperty Name="Art_Id" ColumnName="Arts_Art_Id" />
+      </EndProperty>
+      <EndProperty Name="Tester">
+        <ScalarProperty Name="Employee_Id" ColumnName="Testers_Employee_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GameBlueprintCode" TypeName="GDCdb.GameBlueprintCode" StoreEntitySet="GameBlueprintCode">
+      <EndProperty Name="GameBlueprint">
+        <ScalarProperty Name="Blu_Id" ColumnName="GameBlueprints_Blu_Id" />
+      </EndProperty>
+      <EndProperty Name="Code">
+        <ScalarProperty Name="Code_Id" ColumnName="Codes_Code_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CodeProgrammer" TypeName="GDCdb.CodeProgrammer" StoreEntitySet="CodeProgrammer">
+      <EndProperty Name="Code">
+        <ScalarProperty Name="Code_Id" ColumnName="Codes_Code_Id" />
+      </EndProperty>
+      <EndProperty Name="Programmer">
+        <ScalarProperty Name="Employee_Id" ColumnName="Programmers_Employee_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CodeArt" TypeName="GDCdb.CodeArt" StoreEntitySet="CodeArt">
+      <EndProperty Name="Code">
+        <ScalarProperty Name="Code_Id" ColumnName="Codes_Code_Id" />
+      </EndProperty>
+      <EndProperty Name="Art">
+        <ScalarProperty Name="Art_Id" ColumnName="Arts_Art_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArtArtist" TypeName="GDCdb.ArtArtist" StoreEntitySet="ArtArtist">
+      <EndProperty Name="Art">
+        <ScalarProperty Name="Art_Id" ColumnName="Arts_Art_Id" />
+      </EndProperty>
+      <EndProperty Name="Artist">
+        <ScalarProperty Name="Employee_Id" ColumnName="Artists_Employee_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
